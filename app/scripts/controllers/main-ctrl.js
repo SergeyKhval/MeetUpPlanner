@@ -4,7 +4,7 @@
 
 angular.module('meetUpPlanner')
   .controller('MainCtrl', function ($scope, $firebase) {
-  	// now we can use $firebase to synchronize data between clients and the server!
+    // now we can use $firebase to synchronize data between clients and the server!
     var ref = new Firebase('https://udacity-web-form.firebaseio.com/');
     var sync = $firebase(ref);
 
