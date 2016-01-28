@@ -4,4 +4,4 @@ build
 .tmp
 .sass-cache
 .idea
-app/bower_components
+bower_components
