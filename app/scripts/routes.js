@@ -74,6 +74,10 @@ angular.module('meetUpPlannerApp')
       templateUrl: 'views/addevent.html',
       controller: 'AddeventCtrl'
     })
+    .when('/confirmevent', {
+      templateUrl: 'views/confirmevent.html',
+      controller: 'ConfirmeventCtrl'
+    })
     .otherwise({
       redirectTo: '/'
     });
