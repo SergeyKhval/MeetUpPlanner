@@ -70,11 +70,11 @@ angular.module('meetUpPlannerApp')
       templateUrl: 'views/account.html',
       controller: 'AccountCtrl'
     })
-    .when('/addevent', {
+    .when('/event/add', {
       templateUrl: 'views/addevent.html',
       controller: 'AddeventCtrl'
     })
-    .when('/confirmevent', {
+    .when('/event/confirm', {
       templateUrl: 'views/confirmevent.html',
       controller: 'ConfirmeventCtrl'
     })
