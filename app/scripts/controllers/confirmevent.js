@@ -8,10 +8,10 @@
  * Controller of the meetUpPlannerApp
  */
 angular.module('meetUpPlannerApp')
-  .controller('ConfirmeventCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('ConfirmeventCtrl', function ($scope, Event) {
+
+    $scope.confirmEvent = function(event){
+      return Event.createEvent(event);
+    };
+
   });

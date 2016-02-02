@@ -16,6 +16,21 @@ angular.module('meetUpPlannerApp')
     };
 
     $scope.createAccount = function(email, pass, confirm) {
+      function createProfile(user) {
+        var ref = Ref.child('users', user.uid), def = $q.defer();
+        ref.set({email: email, name: firstPartOfEmail(email)}, function(err) {
+          $timeout(function() {
+            if( err ) {
+              def.reject(err);
+            }
+            else {
+              def.resolve(ref);
+            }
+          });
+        });
+        return def.promise;
+      }
+
       $scope.err = null;
       if( !pass ) {
         $scope.err = 'Please enter a password';
@@ -33,20 +48,7 @@ angular.module('meetUpPlannerApp')
           .then(redirect, showError);
       }
 
-      function createProfile(user) {
-        var ref = Ref.child('users', user.uid), def = $q.defer();
-        ref.set({email: email, name: firstPartOfEmail(email)}, function(err) {
-          $timeout(function() {
-            if( err ) {
-              def.reject(err);
-            }
-            else {
-              def.resolve(ref);
-            }
-          });
-        });
-        return def.promise;
-      }
+
     };
 
     function firstPartOfEmail(email) {
@@ -60,7 +62,7 @@ angular.module('meetUpPlannerApp')
       return f + str.substr(1);
     }
 
-  
+
 
     function redirect() {
       $location.path('/account');

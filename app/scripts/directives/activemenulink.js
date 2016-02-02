@@ -1,3 +1,4 @@
+/* globals $ */
 'use strict';
 
 /**
@@ -12,7 +13,7 @@ angular.module('meetUpPlannerApp')
       restrict: 'A',
       link: function postLink(scope, element, attrs) {
         var activeClass = attrs.activeMenuLink,
-          path = $(element).children("a")[0].hash.substring(1);
+          path = $(element).children('a')[0].hash.substring(1);
 
         scope.location = $location;
 

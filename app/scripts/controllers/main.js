@@ -8,10 +8,10 @@
  * Controller of the meetUpPlannerApp
  */
 angular.module('meetUpPlannerApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, Event) {
+    $scope.events = null;
+
+    Event.allEvents().$loaded().then(function(data){
+      $scope.events = data;
+    });
   });
