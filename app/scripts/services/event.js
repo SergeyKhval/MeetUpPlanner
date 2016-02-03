@@ -10,7 +10,8 @@
 angular.module('meetUpPlannerApp')
   .factory('Event', function (Ref, $firebaseArray) {
     var eventsRef = Ref.child('events'),
-      eventsArray = $firebaseArray(eventsRef);
+      eventsArray = $firebaseArray(eventsRef),
+      rememberedEvent;
 
     function createEvent(event){
       return eventsArray.$add(event);
@@ -20,9 +21,19 @@ angular.module('meetUpPlannerApp')
       return eventsArray;
     }
 
-    // Public API here
+    function rememberEvent(event){
+      rememberedEvent = event;
+      return rememberedEvent;
+    }
+
+    function getRememberedEvent(){
+      return rememberedEvent;
+    }
+
     return {
       createEvent: createEvent,
+      rememberEvent: rememberEvent,
+      getRememberedEvent: getRememberedEvent,
       allEvents: allEvents
     };
   });

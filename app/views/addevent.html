@@ -10,7 +10,7 @@
             <label for="event-name" class="col-sm-3 control-label">Name of the Event:</label>
 
             <div class="col-sm-9">
-              <input id="event-name" class="form-control" type="text" placeholder="My awesome event" autofocus required>
+              <input id="event-name" class="form-control" type="text" ng-model="event.name" placeholder="My awesome event" autofocus required>
             </div>
           </div>
 
@@ -18,7 +18,7 @@
             <label for="eventtype" class="col-sm-3 control-label">Type of your event:</label>
 
             <div class="col-sm-9">
-              <input id="eventtype" class="form-control" type="text" ng-model="selected"
+              <input id="eventtype" class="form-control" type="text" ng-model="event.type"
                      uib-typeahead="state for state in states | filter:$viewValue | limitTo:8"
                      placeholder="Party, conference, etc.">
             </div>
@@ -28,22 +28,22 @@
             <label for="host" class="col-sm-3 control-label">Event's Host:</label>
 
             <div class="col-sm-9">
-              <input id="host" class="form-control" type="text" placeholder="Host's or company's name" required>
+              <input id="host" class="form-control" type="text" ng-model="event.host" placeholder="Host's or company's name" required>
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-3 control-label" for="starttime">Starts:</label>
 
-            <div class="col-sm-9">
+            <div class="col-sm-3">
               <p class="input-group">
                 <input id="starttime"
-                       type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt"
-                       is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions"
+                       type="text" class="form-control" uib-datepicker-popup="dd.MM.yyyy" ng-model="event.startdate"
+                       is-open="openedPopups.startDate" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions"
                        date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
                        alt-input-formats="altInputFormats"/>
                 <span class="input-group-btn">
-                  <button type="button" class="btn btn-default" ng-click="open1()"><i
+                  <button type="button" class="btn btn-default" ng-click="openDatePopup('startDate')"><i
                     class="glyphicon glyphicon-calendar"></i></button>
                 </span>
               </p>
@@ -56,12 +56,12 @@
             <div class="col-sm-9">
               <p class="input-group">
                 <input id="endtime"
-                       type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt"
-                       is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions"
+                       type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="event.enddate"
+                       is-open="openedPopups.endDate" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions"
                        date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
                        alt-input-formats="altInputFormats"/>
                 <span class="input-group-btn">
-                  <button type="button" class="btn btn-default" ng-click="open1()"><i
+                  <button type="button" class="btn btn-default" ng-click="openDatePopup('endDate')"><i
                     class="glyphicon glyphicon-calendar"></i></button>
                 </span>
               </p>
@@ -80,13 +80,13 @@
             <label for="message" class="col-sm-3 control-label">Message:</label>
 
             <div class="col-sm-9">
-              <textarea id="message" class="form-control"></textarea>
+              <textarea id="message" class="form-control" ng-model="event.message"></textarea>
             </div>
           </div>
 
           <div class="form-group">
             <div class="col-xs-12 text-center">
-              <a class="btn btn-raised btn-success" href="#/event/confirm">Continue</a>
+              <a class="btn btn-raised btn-success" ng-click="rememberEvent(event)">Continue</a>
             </div>
           </div>
         </fieldset>

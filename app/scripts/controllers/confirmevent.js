@@ -10,6 +10,8 @@
 angular.module('meetUpPlannerApp')
   .controller('ConfirmeventCtrl', function ($scope, Event) {
 
+    $scope.event = Event.getRememberedEvent();
+
     $scope.confirmEvent = function(event){
       return Event.createEvent(event);
     };
