@@ -72,7 +72,11 @@
             <label for="" class="col-sm-3 control-label">Location</label>
 
             <div class="col-sm-9">
-              Insert map here
+              <google-map-locator class="google-map"
+                                  radius="10"
+                                  on-location-initialize="onLocationInitialize(addressComponents)"
+                                  on-location-change="onLocationChange(addressComponents)">
+              </google-map-locator>
             </div>
           </div>
 

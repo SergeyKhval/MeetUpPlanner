@@ -37,6 +37,8 @@ module.exports = function(config) {
       'bower_components/bootstrap-material-design/dist/js/material.js',
       'bower_components/bootstrap-material-design/dist/js/ripples.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+      'bower_components/angular-googlemap-location-picker/src/angular-googlemap-location-picker.js',
+      'bower_components/jquery-locationpicker-plugin/dist/locationpicker.jquery.js',
       'bower_components/mockfirebase/browser/mockfirebase.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
