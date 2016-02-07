@@ -1,5 +1,4 @@
 //Overrides datepicket styles
-
 .uib-datepicker-popup {
   .uib-day {
     .btn {
@@ -7,6 +6,9 @@
       margin-bottom: 0;
       padding-left: 8px;
       padding-right: 8px;
+      &.btn-info {
+        color: $brand-danger;
+      }
     }
   }
 }

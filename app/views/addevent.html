@@ -18,9 +18,7 @@
             <label for="eventtype" class="col-sm-3 control-label">Type of your event:</label>
 
             <div class="col-sm-9">
-              <input id="eventtype" class="form-control" type="text" ng-model="event.type"
-                     uib-typeahead="state for state in states | filter:$viewValue | limitTo:8"
-                     placeholder="Party, conference, etc.">
+              <input id="eventtype" class="form-control" type="text" ng-model="event.type" uib-typeahead="state for state in states | filter:$viewValue | limitTo:8" placeholder="Party, conference, etc.">
             </div>
           </div>
 
@@ -35,36 +33,35 @@
           <div class="form-group">
             <label class="col-sm-3 control-label" for="starttime">Starts:</label>
 
-            <div class="col-sm-3">
+            <div class="col-sm-6">
               <p class="input-group">
-                <input id="starttime"
-                       type="text" class="form-control" uib-datepicker-popup="dd.MM.yyyy" ng-model="event.startdate"
-                       is-open="openedPopups.startDate" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions"
-                       date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
-                       alt-input-formats="altInputFormats"/>
+                <input id="starttime" type="text" class="form-control" placeholder="24.12.2016" uib-datepicker-popup="dd.MM.yyyy" ng-model="event.startdate" is-open="openedPopups.startDate" max-date="event.enddate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-default" ng-click="openDatePopup('startDate')"><i
                     class="glyphicon glyphicon-calendar"></i></button>
                 </span>
               </p>
             </div>
+            <div class="col-sm-3">
+              <uib-timepicker ng-model="event.starttime" hour-step="timePicker.hstep" minute-step="timePicker.mstep" show-meridian="false"></uib-timepicker>
+            </div>
           </div>
 
           <div class="form-group">
             <label for="endtime" class="col-sm-3 control-label">Ends:</label>
 
-            <div class="col-sm-9">
+            <div class="col-sm-6">
               <p class="input-group">
-                <input id="endtime"
-                       type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="event.enddate"
-                       is-open="openedPopups.endDate" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions"
-                       date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
-                       alt-input-formats="altInputFormats"/>
+                <input id="endtime" type="text" class="form-control" placeholder="25.12.2016" uib-datepicker-popup="dd.MM.yyyy" ng-model="event.enddate" is-open="openedPopups.endDate" min-date="event.startdate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-default" ng-click="openDatePopup('endDate')"><i
                     class="glyphicon glyphicon-calendar"></i></button>
                 </span>
               </p>
+            </div>
+
+            <div class="col-sm-3">
+              <uib-timepicker ng-model="event.endtime" hour-step="timePicker.hstep" minute-step="timePicker.mstep" show-meridian="false"></uib-timepicker>
             </div>
           </div>
 
@@ -72,10 +69,7 @@
             <label for="" class="col-sm-3 control-label">Location</label>
 
             <div class="col-sm-9">
-              <google-map-locator class="google-map"
-                                  radius="10"
-                                  on-location-initialize="onLocationInitialize(addressComponents)"
-                                  on-location-change="onLocationChange(addressComponents)">
+              <google-map-locator class="google-map" radius="10" on-location-initialize="onLocationInitialize(addressComponents)" on-location-change="onLocationChange(addressComponents)">
               </google-map-locator>
             </div>
           </div>
@@ -84,7 +78,7 @@
             <label for="message" class="col-sm-3 control-label">Message:</label>
 
             <div class="col-sm-9">
-              <textarea id="message" class="form-control" ng-model="event.message"></textarea>
+              <textarea id="message" class="form-control" placeholder="Any additional info? Write it here" ng-model="event.message"></textarea>
             </div>
           </div>
 

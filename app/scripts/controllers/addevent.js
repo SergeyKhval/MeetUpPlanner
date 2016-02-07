@@ -28,4 +28,9 @@ angular.module('meetUpPlannerApp')
     $scope.openDatePopup = function(popup){
       $scope.openedPopups[popup] = true;
     };
+
+  $scope.timePicker = {
+    hstep: 1,
+    mstep: 15
+  }
   });
