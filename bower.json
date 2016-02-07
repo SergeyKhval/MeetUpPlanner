@@ -25,12 +25,17 @@
   "moduleName": "meetUpPlannerApp",
   "overrides": {
     "jquery-locationpicker-plugin": {
-      "main": ["./dist/locationpicker.jquery.js"]
+      "main": [
+        "./dist/locationpicker.jquery.js"
+      ]
     },
     "angular-googlemap-location-picker": {
       "main": [
         "./src/angular-googlemap-location-picker.js"
       ]
     }
+  },
+  "resolutions": {
+    "angular": ">=1.4.0"
   }
 }

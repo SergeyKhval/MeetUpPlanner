@@ -46,10 +46,10 @@
         <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
           <ul class="nav navbar-nav">
-            <li active-menu-link="active"><a href="#/">Home</a></li>
-            <li active-menu-link="active"><a href="#/event/add">Add Event</a></li>
+            <li active-menu-path=""><a href="#/">Home</a></li>
+            <li active-menu-path="event"><a href="#/event/add">Add Event</a></li>
             <!-- //angularfire -->
-            <li>
+            <li active-menu-path="login">
               <a ng-hide-auth="" href="#/login">Log In</a>
               <!--a ng-show-auth="" href="#/account">Account</a-->
             </li>
@@ -114,7 +114,7 @@
   <script src="scripts/routes.js"></script>
   <script src="scripts/controllers/addevent.js"></script>
   <script src="scripts/controllers/confirmevent.js"></script>
-  <script src="scripts/directives/activemenulink.js"></script>
+  <script src="scripts/directives/activemenupath.js"></script>
   <script src="scripts/services/event.js"></script>
   <!-- endbuild -->
 
