@@ -9,7 +9,9 @@
  */
 angular.module('meetUpPlannerApp')
   .controller('AddeventCtrl', function ($scope, $location, Event) {
-    $scope.rememberEvent = function(event){
+    $scope.event = Event.getRememberedEvent();
+
+    $scope.rememberEvent = function (event) {
       Event.rememberEvent(event);
       $location.path('/event/confirm');
     };
@@ -25,12 +27,12 @@ angular.module('meetUpPlannerApp')
       endDate: false
     };
 
-    $scope.openDatePopup = function(popup){
+    $scope.openDatePopup = function (popup) {
       $scope.openedPopups[popup] = true;
     };
 
-  $scope.timePicker = {
-    hstep: 1,
-    mstep: 15
-  }
+    $scope.timePicker = {
+      hstep: 1,
+      mstep: 15
+    }
   });

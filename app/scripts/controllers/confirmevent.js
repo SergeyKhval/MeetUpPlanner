@@ -8,12 +8,11 @@
  * Controller of the meetUpPlannerApp
  */
 angular.module('meetUpPlannerApp')
-  .controller('ConfirmeventCtrl', function ($scope, Event) {
+  .controller('ConfirmeventCtrl', function ($location, $scope, Event) {
 
     $scope.event = Event.getRememberedEvent();
 
-    $scope.confirmEvent = function(event){
+    $scope.confirmEvent = function (event) {
       return Event.createEvent(event);
     };
-
   });
