@@ -68,7 +68,9 @@
           <div class="form-group">
             <label for="" class="col-sm-3 control-label">Location</label>
 
+
             <div class="col-sm-9">
+              <input type="text" id="google-map-locator-address" class="form-control" ng-model="event.location"/>
               <google-map-locator class="google-map" radius="10" on-location-initialize="onLocationInitialize(addressComponents)" on-location-change="onLocationChange(addressComponents)">
               </google-map-locator>
             </div>

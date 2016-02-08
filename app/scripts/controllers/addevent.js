@@ -34,5 +34,5 @@ angular.module('meetUpPlannerApp')
     $scope.timePicker = {
       hstep: 1,
       mstep: 15
-    }
+    };
   });
