@@ -15,4 +15,9 @@ angular.module('meetUpPlannerApp')
     $scope.confirmEvent = function (event) {
       return Event.createEvent(event);
     };
+
+    $scope.cancelEvent = function () {
+      Event.rememberEvent({});
+      $location.path('#/');
+    };
   });
