@@ -35,4 +35,14 @@ angular.module('meetUpPlannerApp')
       hstep: 1,
       mstep: 15
     };
+
+    $scope.mapoptions = {
+      autocomplete: true,
+      inputName: '#google-map-locator-address'
+    };
+
+    $scope.location = {
+      latitude: 12.8139068,
+      longitude: 77.6516683
+    };
   });
