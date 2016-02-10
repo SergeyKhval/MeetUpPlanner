@@ -11,9 +11,11 @@ angular.module('meetUpPlannerApp')
   .controller('AddeventCtrl', function ($scope, $location, Event) {
     $scope.event = Event.getRememberedEvent();
 
-    $scope.rememberEvent = function (event) {
-      Event.rememberEvent(event);
-      $location.path('/event/confirm');
+    $scope.rememberEvent = function (form, event) {
+      if (form.$valid){
+        Event.rememberEvent(event);
+        $location.path('/event/confirm');
+      }
     };
 
     $scope.dateOptions = {
