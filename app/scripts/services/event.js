@@ -14,6 +14,10 @@ angular.module('meetUpPlannerApp')
       rememberedEvent;
 
     function createEvent(event){
+      event.startdate = event.startdate.getTime();
+      event.starttime = event.starttime.getTime();
+      event.enddate = event.enddate.getTime();
+      event.endtime = event.endtime.getTime();
       return eventsArray.$add(event);
     }
 

@@ -1,5 +1,9 @@
 <div class="row">
 
+  <div class="col-xs-12 text-center">
+    <a class="btn btn-success" href="#/event/add">Add your event</a>
+  </div>
+
   <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="event in events">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -12,9 +16,9 @@
           <dt>Host:</dt>
           <dd>{{event.host}}</dd>
           <dt>Starts:</dt>
-          <dd>{{event.startdate}} - {{event.starttime}}</dd>
+          <dd>On {{event.startdate | date: 'dd-MM-yyyy'}} at {{event.starttime | date: 'HH:mm'}}</dd>
           <dt>Ends:</dt>
-          <dd>{{event.enddate}} - {{event.endtime}}</dd>
+          <dd>On {{event.enddate | date: 'dd-MM-yyyy'}} at {{event.endtime | date: 'HH:mm'}}</dd>
           <dt>Guests:</dt>
           <dd>{{event.guests}}</dd>
           <dt>Location:</dt>
