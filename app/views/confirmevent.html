@@ -3,19 +3,19 @@
     <div class="well">
       <p>Please, check your event</p>
       <dl>
-        <dt>Name:</dt>
+        <dt>Event Name:</dt>
         <dd>{{event.name}}</dd>
-        <dt>Type:</dt>
+        <dt>Event Type:</dt>
         <dd>{{event.type}}</dd>
-        <dt>Host:</dt>
+        <dt>Event's Host:</dt>
         <dd>{{event.host}}</dd>
         <dt>Starts:</dt>
-        <dd>{{event.startdate}} - {{event.starttime}}</dd>
+        <dd>On {{event.startdate | date: 'dd-MM-yyyy'}} at {{event.starttime | date: 'HH:mm'}}</dd>
         <dt>Ends:</dt>
-        <dd>{{event.enddate}} - {{event.endtime}}</dd>
-        <dt>Location:</dt>
+        <dd>On {{event.enddate | date: 'dd-MM-yyyy'}} at {{event.endtime | date: 'HH:mm'}}</dd>
+        <dt>Event's Location:</dt>
         <dd>{{event.location}}</dd>
-        <dt>Message:</dt>
+        <dt>Additional Message:</dt>
         <dd>{{event.message}}</dd>
       </dl>
       <div>
