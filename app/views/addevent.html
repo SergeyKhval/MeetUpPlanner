@@ -7,7 +7,7 @@
 
         <fieldset>
           <div class="form-group">
-            <label for="event-name" class="col-sm-3 control-label">Name of the Event:</label>
+            <label for="event-name" class="col-sm-3 control-label control-label_required">Name of the Event:</label>
 
             <div class="col-sm-9">
               <input id="event-name" class="form-control" type="text" ng-model="event.name" placeholder="My awesome event" ng-required="true" autofocus>
@@ -15,7 +15,7 @@
           </div>
 
           <div class="form-group">
-            <label for="eventtype" class="col-sm-3 control-label">Type of your event:</label>
+            <label for="eventtype" class="col-sm-3 control-label control-label_required">Type of your event:</label>
 
             <div class="col-sm-9">
               <input id="eventtype" class="form-control" type="text" ng-model="event.type" uib-typeahead="state for state in states | filter:$viewValue | limitTo:8" placeholder="Party, conference, etc." ng-required="true">
@@ -23,7 +23,7 @@
           </div>
 
           <div class="form-group">
-            <label for="host" class="col-sm-3 control-label">Event's Host:</label>
+            <label for="host" class="col-sm-3 control-label control-label_required">Event's Host:</label>
 
             <div class="col-sm-9">
               <input id="host" class="form-control" type="text" ng-model="event.host" placeholder="Host's or company's name" ng-required="">
@@ -31,7 +31,7 @@
           </div>
 
           <div class="form-group">
-            <label class="col-sm-3 control-label" for="starttime">Starts:</label>
+            <label class="col-sm-3 control-label control-label_required" for="starttime">Starts:</label>
 
             <div class="col-sm-6">
               <p class="input-group">
@@ -48,7 +48,7 @@
           </div>
 
           <div class="form-group">
-            <label for="endtime" class="col-sm-3 control-label">Ends:</label>
+            <label for="endtime" class="col-sm-3 control-label control-label_required">Ends:</label>
 
             <div class="col-sm-6">
               <p class="input-group">
@@ -66,7 +66,7 @@
           </div>
 
           <div class="form-group">
-            <label for="google-map-locator-address" class="col-sm-3 control-label">Location</label>
+            <label for="google-map-locator-address" class="col-sm-3 control-label control-label_required">Location</label>
 
 
             <div class="col-sm-9">

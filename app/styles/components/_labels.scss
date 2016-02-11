@@ -1,0 +1,10 @@
+//Form group labels
+
+.control-label {
+  &_required {
+    &:after {
+      content: '*';
+      color: $brand-danger;
+    }
+  }
+}

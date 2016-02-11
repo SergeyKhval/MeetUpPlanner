@@ -29,7 +29,7 @@
 
   <!-- Add your site or application content here -->
   <div class="header" ng-cloak="">
-    <div class="navbar navbar-default" role="navigation">
+    <div class="navbar navbar-default" role="navigation" ng-controller="NavbarCtrl">
       <div class="container">
         <div class="navbar-header">
 
@@ -51,7 +51,7 @@
             <!-- //angularfire -->
             <li active-menu-path="login">
               <a ng-hide-auth="" href="#/login">Log In</a>
-              <!--a ng-show-auth="" href="#/account">Account</a-->
+              <a href="#" ng-show-auth="" ng-click="logout()">Log Out</a>
             </li>
 
           </ul>
@@ -118,6 +118,7 @@
   <script src="scripts/controllers/confirmevent.js"></script>
   <script src="scripts/directives/activemenupath.js"></script>
   <script src="scripts/services/event.js"></script>
+  <script src="scripts/controllers/navbar.js"></script>
   <!-- endbuild -->
 
   <script>

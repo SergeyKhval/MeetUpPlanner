@@ -22,16 +22,21 @@
         <a href="#/event/add" class="btn btn-warning btn-raised">Edit event</a>
         <a class="btn btn-danger btn-raised" ng-click="cancelEvent()">Cancel event</a>
       </div>
-      <p>If everything is correct, you can:</p>
 
-      <div ng-hide-auth="">
-        <a href="" class="btn btn-success btn-raised">Register and create event</a>
-        <a href="" class="btn btn-primary btn-raised">Login and create event</a>
-        <btn class="btn btn-default btn-raised" ng-click="confirmEvent(event)">Create event as a guest</btn>
-      </div>
+      <p ng-hide-auth="">If everything is correct, you can log in and create your event.</p>
+
+      <p ng-hide-auth="">If you don't have an account, you can
+        <button class="btn btn-raised btn-success">register and create event</button>
+        or
+        <button class="btn btn-raised btn-default" ng-click="confirmEvent(event)">create event as a guest</button>
+      </p>
+
+      <p ng-show-auth="">
+        <a href="" class="btn btn-success btn-raised">Create event</a>
+      </p>
 
       <div ng-show-auth="">
-        <a href="" class="btn btn-success btn-raised" ng-show-auth="">Create event</a>
+
       </div>
     </div>
   </div>
