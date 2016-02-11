@@ -1,79 +1,29 @@
 <div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-4">
+
+  <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="event in events">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Name of the event</h3>
+        <h3 class="panel-title">{{event.name}}</h3>
       </div>
       <div class="panel-body">
         <dl>
           <dt>Type:</dt>
-          <dd>Birthday</dd>
+          <dd>{{event.type}}</dd>
           <dt>Host:</dt>
-          <dd>Host's name / organization</dd>
+          <dd>{{event.host}}</dd>
           <dt>Starts:</dt>
-          <dd>Start date/time</dd>
+          <dd>{{event.startdate}} - {{event.starttime}}</dd>
           <dt>Ends:</dt>
-          <dd>End date/time</dd>
+          <dd>{{event.enddate}} - {{event.endtime}}</dd>
           <dt>Guests:</dt>
-          <dd>Guest list</dd>
+          <dd>{{event.guests}}</dd>
           <dt>Location:</dt>
-          <dd>Location of the event</dd>
+          <dd>{{event.location}}</dd>
           <dt>Message:</dt>
-          <dd>Text of optional message</dd>
+          <dd>{{event.message}}</dd>
         </dl>
       </div>
     </div>
   </div>
 
-  <div class="col-xs-12 col-sm-6 col-md-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Name of the event</h3>
-      </div>
-      <div class="panel-body">
-        <dl>
-          <dt>Type:</dt>
-          <dd>Birthday</dd>
-          <dt>Host:</dt>
-          <dd>Host's name / organization</dd>
-          <dt>Starts:</dt>
-          <dd>Start date/time</dd>
-          <dt>Ends:</dt>
-          <dd>End date/time</dd>
-          <dt>Guests:</dt>
-          <dd>Guest list</dd>
-          <dt>Location:</dt>
-          <dd>Location of the event</dd>
-          <dt>Message:</dt>
-          <dd>Text of optional message</dd>
-        </dl>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-xs-12 col-sm-6 col-md-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Name of the event</h3>
-      </div>
-      <div class="panel-body">
-        <dl>
-          <dt>Type:</dt>
-          <dd>Birthday</dd>
-          <dt>Host:</dt>
-          <dd>Host's name / organization</dd>
-          <dt>Starts:</dt>
-          <dd>Start date/time</dd>
-          <dt>Ends:</dt>
-          <dd>End date/time</dd>
-          <dt>Guests:</dt>
-          <dd>Guest list</dd>
-          <dt>Location:</dt>
-          <dd>Location of the event</dd>
-          <dt>Message:</dt>
-          <dd>Text of optional message</dd>
-        </dl>
-      </div>
-    </div>
-  </div>
 </div>
