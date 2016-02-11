@@ -10,17 +10,23 @@
 angular.module('meetUpPlannerApp')
   .controller('ConfirmeventCtrl', function ($location, $scope, Event) {
 
-    $scope.event = Event.getRememberedEvent();
+    function cancelEvent(){
+      Event.rememberEvent({});
+      $location.path('#/');
+    }
 
-    $scope.confirmEvent = function (event) {
+    function confirmEvent(event){
       Event.createEvent(event).then(function(){
         Event.rememberEvent({});
         $location.path('#/');
       });
-    };
+    }
 
-    $scope.cancelEvent = function () {
-      Event.rememberEvent({});
-      $location.path('#/');
-    };
+    $scope.event = Event.getRememberedEvent();
+
+    $scope.loginMode = true;
+
+    $scope.confirmEvent = confirmEvent;
+
+    $scope.cancelEvent = cancelEvent;
   });
