@@ -31,6 +31,13 @@
           </div>
 
           <div class="form-group">
+            <label for="guests" class="col-sm-3 control-label">Guests:</label>
+            <div class="col-sm-9">
+              <textarea id="guests" class="form-control" ng-model="event.guests"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
             <label class="col-sm-3 control-label control-label_required" for="starttime">Starts:</label>
 
             <div class="col-sm-6">
@@ -70,7 +77,7 @@
 
 
             <div class="col-sm-9">
-              <input type="text" id="google-map-locator-address" class="form-control" ng-model="event.location" ng-required="true"/>
+              <input type="text" id="google-map-locator-address" class="form-control" ng-model="event.location" ng-required="true" />
               <google-map-locator class="google-map" radius="10" options="{{mapoptions}}" on-location-initialize="onLocationInitialize(addressComponents)" on-location-change="onLocationChange(addressComponents)">
               </google-map-locator>
             </div>

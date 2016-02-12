@@ -9,6 +9,8 @@
         <dd>{{event.type}}</dd>
         <dt>Event's Host:</dt>
         <dd>{{event.host}}</dd>
+        <dt>Guests:</dt>
+        <dd>{{event.guests}}</dd>
         <dt>Starts:</dt>
         <dd>On {{event.startdate | date: 'dd-MM-yyyy'}} at {{event.starttime | date: 'HH:mm'}}</dd>
         <dt>Ends:</dt>
@@ -38,7 +40,7 @@
           <label for="password" class="col-sm-3 control-label control-label_required">Password</label>
 
           <div class="col-sm-9">
-            <input type="password" id="password" class="form-control" ng-model="login.password" ng-required="true"/>
+            <input type="password" id="password" class="form-control" ng-model="login.password" ng-required="true" />
           </div>
 
         </div>
