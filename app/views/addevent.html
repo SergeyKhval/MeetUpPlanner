@@ -10,7 +10,12 @@
             <label for="event-name" class="col-sm-3 control-label control-label_required">Name of the Event:</label>
 
             <div class="col-sm-9">
-              <input id="event-name" class="form-control" type="text" ng-model="event.name" placeholder="My awesome event" ng-required="true" autofocus>
+              <input id="event-name" class="form-control" name="eventname" type="text" ng-model="event.name" placeholder="My awesome event" ng-required="true" ng-minlength="3" autofocus>
+            </div>
+            
+            <div class="col-xs-12 col-sm-9 col-sm-offset-3" ng-if="addEvent.eventname.$touched" ng-messages="addEvent.eventname.$error">
+              <p class="text-danger" ng-message="required">Name of the event is required</p>
+              <p class="text-danger" ng-message="minlength">The name of the event must be at least 3 characters long</p>
             </div>
           </div>
 
@@ -18,7 +23,12 @@
             <label for="eventtype" class="col-sm-3 control-label control-label_required">Type of your event:</label>
 
             <div class="col-sm-9">
-              <input id="eventtype" class="form-control" type="text" ng-model="event.type" placeholder="Party, conference, etc." ng-required="true">
+              <input id="eventtype" class="form-control" name="eventtype" type="text" ng-model="event.type" placeholder="Party, conference, etc." ng-required="true" ng-minlength="3">
+            </div>
+            
+            <div class="col-xs-12 col-sm-9 col-sm-offset-3" ng-if="addEvent.eventtype.$touched" ng-messages="addEvent.eventtype.$error">
+              <p class="text-danger" ng-message="required">Type of the event is required</p>
+              <p class="text-danger" ng-message="minlength">The type of the event must be at least 3 characters long</p>
             </div>
           </div>
 
@@ -26,16 +36,15 @@
             <label for="host" class="col-sm-3 control-label control-label_required">Event's Host:</label>
 
             <div class="col-sm-9">
-              <input id="host" class="form-control" type="text" ng-model="event.host" placeholder="Host's or company's name" ng-required="">
+              <input id="host" class="form-control" name="eventhost" type="text" ng-model="event.host" placeholder="Host's or company's name" ng-required="true">
+            </div>
+            
+            <div class="col-xs-12 col-sm-9 col-sm-offset-3" ng-if="addEvent.eventhost.$touched" ng-messages="addEvent.eventhost.$error">
+              <p class="text-danger" ng-message="required">Event must have host</p>
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="guests" class="col-sm-3 control-label">Guests:</label>
-            <div class="col-sm-9">
-              <textarea id="guests" class="form-control" ng-model="event.guests"></textarea>
-            </div>
-          </div>
+          
 
           <div class="form-group">
             <label class="col-sm-3 control-label control-label_required" for="starttime">Starts:</label>
@@ -80,6 +89,13 @@
               <input type="text" id="google-map-locator-address" class="form-control" ng-model="event.location" ng-required="true" />
               <google-map-locator class="google-map" radius="10" options="{{mapoptions}}" on-location-initialize="onLocationInitialize(addressComponents)" on-location-change="onLocationChange(addressComponents)">
               </google-map-locator>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="guests" class="col-sm-3 control-label">Guests:</label>
+            <div class="col-sm-9">
+              <textarea id="guests" class="form-control" ng-model="event.guests"></textarea>
             </div>
           </div>
 

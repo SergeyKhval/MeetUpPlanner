@@ -15,6 +15,7 @@ angular.module('meetUpPlannerApp', [
   'ngRoute',
   'ngSanitize',
   'ngTouch',
+  'ngMessages',
   'firebase',
   'firebase.ref',
   'firebase.auth',
