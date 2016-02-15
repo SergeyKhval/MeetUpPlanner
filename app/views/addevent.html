@@ -12,7 +12,7 @@
             <div class="col-sm-9">
               <input id="event-name" class="form-control" name="eventname" type="text" ng-model="event.name" placeholder="My awesome event" ng-required="true" ng-minlength="3" autofocus>
             </div>
-            
+
             <div class="col-xs-12 col-sm-9 col-sm-offset-3" ng-if="addEvent.eventname.$touched" ng-messages="addEvent.eventname.$error">
               <p class="text-danger" ng-message="required">Name of the event is required</p>
               <p class="text-danger" ng-message="minlength">The name of the event must be at least 3 characters long</p>
@@ -25,7 +25,7 @@
             <div class="col-sm-9">
               <input id="eventtype" class="form-control" name="eventtype" type="text" ng-model="event.type" placeholder="Party, conference, etc." ng-required="true" ng-minlength="3">
             </div>
-            
+
             <div class="col-xs-12 col-sm-9 col-sm-offset-3" ng-if="addEvent.eventtype.$touched" ng-messages="addEvent.eventtype.$error">
               <p class="text-danger" ng-message="required">Type of the event is required</p>
               <p class="text-danger" ng-message="minlength">The type of the event must be at least 3 characters long</p>
@@ -38,20 +38,20 @@
             <div class="col-sm-9">
               <input id="host" class="form-control" name="eventhost" type="text" ng-model="event.host" placeholder="Host's or company's name" ng-required="true">
             </div>
-            
+
             <div class="col-xs-12 col-sm-9 col-sm-offset-3" ng-if="addEvent.eventhost.$touched" ng-messages="addEvent.eventhost.$error">
               <p class="text-danger" ng-message="required">Event must have host</p>
             </div>
           </div>
 
-          
+
 
           <div class="form-group">
             <label class="col-sm-3 control-label control-label_required" for="starttime">Starts:</label>
 
             <div class="col-sm-6">
               <p class="input-group">
-                <input id="starttime" type="text" class="form-control" placeholder="24.12.2016" uib-datepicker-popup="dd.MM.yyyy" ng-model="event.startdate" is-open="openedPopups.startDate" max-date="event.enddate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                <input id="starttime" type="text" class="form-control" name="eventstartdate" placeholder="24.12.2016" uib-datepicker-popup="dd.MM.yyyy" ng-model="event.startdate" is-open="openedPopups.startDate" max-date="event.enddate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-default" ng-click="openDatePopup('startDate')"><i
                     class="glyphicon glyphicon-calendar"></i></button>
@@ -59,7 +59,15 @@
               </p>
             </div>
             <div class="col-sm-3">
-              <uib-timepicker ng-model="event.starttime" hour-step="timePicker.hstep" minute-step="timePicker.mstep" show-meridian="false" ng-required="true"></uib-timepicker>
+              <uib-timepicker ng-model="event.starttime" name="eventstarttime" hour-step="timePicker.hstep" minute-step="timePicker.mstep" show-meridian="false" ng-required="true"></uib-timepicker>
+            </div>
+
+            <div class="col-sm-9 col-sm-offset-3" ng-if="addEvent.eventstartdate.$touched" ng-messages="addEvent.eventstartdate.$error">
+              <p class="text-danger" ng-message="required">Your event for sure must have a start date</p>
+            </div>
+
+            <div class="col-sm-9 col-sm-offset-3" ng-if="addEvent.eventstarttime.$touched" ng-messages="addEvent.eventstarttime.$error">
+              <p class="text-danger" ng-message="required">Your event for sure must have a start time</p>
             </div>
           </div>
 
@@ -68,7 +76,7 @@
 
             <div class="col-sm-6">
               <p class="input-group">
-                <input id="endtime" type="text" class="form-control" placeholder="25.12.2016" uib-datepicker-popup="dd.MM.yyyy" ng-model="event.enddate" is-open="openedPopups.endDate" min-date="event.startdate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                <input id="endtime" type="text" name="eventenddate" class="form-control" placeholder="25.12.2016" uib-datepicker-popup="dd.MM.yyyy" ng-model="event.enddate" is-open="openedPopups.endDate" min-date="event.startdate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-default" ng-click="openDatePopup('endDate')"><i
                     class="glyphicon glyphicon-calendar"></i></button>
@@ -77,7 +85,15 @@
             </div>
 
             <div class="col-sm-3">
-              <uib-timepicker ng-model="event.endtime" ng-required="true" hour-step="timePicker.hstep" minute-step="timePicker.mstep" show-meridian="false"></uib-timepicker>
+              <uib-timepicker ng-model="event.endtime" name="eventendtime" ng-required="true" hour-step="timePicker.hstep" minute-step="timePicker.mstep" show-meridian="false"></uib-timepicker>
+            </div>
+
+            <div class="col-sm-9 col-sm-offset-3" ng-if="addEvent.eventenddate.$touched" ng-messages="addEvent.eventenddate.$error">
+              <p class="text-danger" ng-message="required">Your event for sure must have a start date</p>
+            </div>
+
+            <div class="col-sm-9 col-sm-offset-3" ng-if="addEvent.eventendtime.$touched" ng-messages="addEvent.eventendtime.$error">
+              <p class="text-danger" ng-message="required">Your event for sure must have a start time</p>
             </div>
           </div>
 
@@ -86,12 +102,16 @@
 
 
             <div class="col-sm-9">
-              <input type="text" id="google-map-locator-address" class="form-control" ng-model="event.location" ng-required="true" />
+              <input type="text" id="google-map-locator-address" class="form-control" name="eventlocation" ng-model="event.location" ng-required="true" />
               <google-map-locator class="google-map" radius="10" options="{{mapoptions}}" on-location-initialize="onLocationInitialize(addressComponents)" on-location-change="onLocationChange(addressComponents)">
               </google-map-locator>
             </div>
+
+            <div class="col-sm-9 col-sm-offset-3" ng-if="addEvent.eventlocation.$touched" ng-messages="addEvent.eventlocation.$error">
+              <p class="text-danger" ng-message="required">Your event should take place somewhere</p>
+            </div>
           </div>
-          
+
           <div class="form-group">
             <label for="guests" class="col-sm-3 control-label">Guests:</label>
             <div class="col-sm-9">
