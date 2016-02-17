@@ -9,14 +9,14 @@
         <dd>{{event.type}}</dd>
         <dt>Event's Host:</dt>
         <dd>{{event.host}}</dd>
-        <dt>Guests:</dt>
-        <dd>{{event.guests}}</dd>
         <dt>Starts:</dt>
         <dd>On {{event.startdate | date: 'dd-MM-yyyy'}} at {{event.starttime | date: 'HH:mm'}}</dd>
         <dt>Ends:</dt>
         <dd>On {{event.enddate | date: 'dd-MM-yyyy'}} at {{event.endtime | date: 'HH:mm'}}</dd>
         <dt>Event's Location:</dt>
         <dd>{{event.location}}</dd>
+        <dt>Guests:</dt>
+        <dd>{{event.guests}}</dd>
         <dt>Additional Message:</dt>
         <dd>{{event.message}}</dd>
       </dl>
@@ -27,7 +27,7 @@
 
       <p ng-hide-auth="">If everything is correct, you can log in and create your event.</p>
 
-      <form class="form-horizontal" name="loginForm" ng-show="loginMode">
+      <form class="form-horizontal" name="loginForm" ng-show="loginMode" ng-hide-auth="" ng-submit="loginAndCreateEvent(login.email, login.password)">
         <div class="form-group">
           <label for="email" class="col-sm-3 control-label control-label_required">Email</label>
 
@@ -61,7 +61,7 @@
       </p>
 
       <p ng-show-auth="">
-        <a href="" class="btn btn-success btn-raised">Create event</a>
+        <a href="" class="btn btn-success btn-raised" ng-click="confirmEvent(event)">Create event</a>
       </p>
 
       <div ng-show-auth="">

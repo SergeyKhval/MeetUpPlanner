@@ -4,7 +4,7 @@
     <a class="btn btn-success" href="#/event/add">Add your event</a>
   </div>
 
-  <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="event in events">
+  <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="event in events | orderBy: '-createdAt'">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">{{event.name}}</h3>

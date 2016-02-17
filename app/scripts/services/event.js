@@ -1,3 +1,4 @@
+/* globals Firebase: false */
 'use strict';
 
 /**
@@ -18,6 +19,8 @@ angular.module('meetUpPlannerApp')
       event.starttime = event.starttime.getTime();
       event.enddate = event.enddate.getTime();
       event.endtime = event.endtime.getTime();
+      event.createdAt = Firebase.ServerValue.TIMESTAMP;
+
       return eventsArray.$add(event);
     }
 

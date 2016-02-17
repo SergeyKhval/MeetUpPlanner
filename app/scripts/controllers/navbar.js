@@ -8,9 +8,9 @@
  * Controller of the meetUpPlannerApp
  */
 angular.module('meetUpPlannerApp')
-  .controller('NavbarCtrl', function ($scope, Auth) {
+  .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.logout = function(){
-      console.log('clicked');
       Auth.$unauth();
+      $location.path('#/');
     };
   });
