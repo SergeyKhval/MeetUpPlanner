@@ -25,40 +25,43 @@
         <a class="btn btn-danger btn-raised" ng-click="cancelEvent()">Cancel event</a>
       </div>
 
-      <p ng-hide-auth="">If everything is correct, you can log in and create your event.</p>
+      <div ng-hide-auth="">
+        <p>If everything is correct, you can log in and create your event.</p>
 
-      <form class="form-horizontal" name="loginForm" ng-show="loginMode" ng-hide-auth="" ng-submit="loginAndCreateEvent(login.email, login.password)">
-        <div class="form-group">
-          <label for="email" class="col-sm-3 control-label control-label_required">Email</label>
+        <form class="form-horizontal" name="loginForm" ng-show="loginMode"
+              ng-submit="loginAndCreateEvent(login.email, login.password)">
+          <div class="form-group">
+            <label for="email" class="col-sm-3 control-label control-label_required">Email</label>
 
-          <div class="col-sm-9">
-            <input type="email" id="email" class="form-control" ng-model="login.email" ng-required="true" autofocus/>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="password" class="col-sm-3 control-label control-label_required">Password</label>
-
-          <div class="col-sm-9">
-            <input type="password" id="password" class="form-control" ng-model="login.password" ng-required="true" />
+            <div class="col-sm-9">
+              <input type="email" id="email" class="form-control" ng-model="login.email" ng-required="true" autofocus/>
+            </div>
           </div>
 
-        </div>
+          <div class="form-group">
+            <label for="password" class="col-sm-3 control-label control-label_required">Password</label>
 
-        <div class="form-group">
-          <div class="col-xs-12 text-center">
-            <button type="submit" class="btn btn-raised btn-success">Login and create</button>
+            <div class="col-sm-9">
+              <input type="password" id="password" class="form-control" ng-model="login.password" ng-required="true"/>
+            </div>
+
           </div>
-        </div>
-      </form>
 
-      <hr/>
+          <div class="form-group">
+            <div class="col-xs-12 text-center">
+              <button type="submit" class="btn btn-raised btn-success">Login and create</button>
+            </div>
+          </div>
+        </form>
 
-      <p ng-hide-auth="">Dont't have an account? No problem, you can
-        <button class="btn btn-raised btn-success" ng-click="loginMode = false">register and create event</button>
-        or even simpler
-        <button class="btn btn-raised btn-default" ng-click="confirmEvent(event)">create event as a guest</button>
-      </p>
+        <hr/>
+
+        <p>Dont't have an account? No problem, you can
+          <button class="btn btn-raised btn-success" ng-click="loginMode = false">register and create event</button>
+          or even simpler
+          <button class="btn btn-raised btn-default" ng-click="confirmEvent(event)">create event as a guest</button>
+        </p>
+      </div>
 
       <p ng-show-auth="">
         <a href="" class="btn btn-success btn-raised" ng-click="confirmEvent(event)">Create event</a>
