@@ -14,26 +14,35 @@ angular.module('meetUpPlannerApp')
       $scope.err = err;
     }
 
-    function cancelEvent(){
+    function cancelEvent() {
       Event.rememberEvent({});
       $location.path('#/');
     }
 
-    function confirmEvent(event){
-      Event.createEvent(event).then(function(){
+    function confirmEvent(event) {
+      Event.createEvent(event).then(function () {
         Event.rememberEvent({});
         $location.path('#/');
       });
     }
 
-    function loginAndCreateEvent(email, password){
+    function loginAndCreateEvent(user) {
       $scope.err = null;
-      Auth.$authWithPassword({email: email, password: password}, {rememberMe: true}).then(
-        function(){
+      Auth.$authWithPassword({
+        email: user.email,
+        password: user.password
+      }, {
+        rememberMe: true
+      }).then(
+        function () {
           confirmEvent($scope.event);
         }, showError
       );
     }
+
+//    function registerAndCreateEvent(user) {
+  //
+  //    }
 
     $scope.event = Event.getRememberedEvent();
 

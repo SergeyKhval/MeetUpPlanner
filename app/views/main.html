@@ -20,8 +20,8 @@
               <p>Ends: <strong>on {{event.enddate | date: 'dd-MM-yyyy'}} at {{event.endtime | date: 'HH:mm'}}</strong>
               </p>
               <p>Location: <strong>{{event.location}}</strong></p>
-              <p>Guests: <strong>{{event.guests}}</strong></p>
-              <p>Message: <strong>{{event.message}}</strong></p>
+              <p ng-if="event.guests">Guests: <strong>{{event.guests}}</strong></p>
+              <p ng-if="event.message">Message: <strong>{{event.message}}</strong></p>
             </div>
           </div>
         </div>
