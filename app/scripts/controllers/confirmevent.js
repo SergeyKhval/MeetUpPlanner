@@ -11,7 +11,7 @@ angular.module('meetUpPlannerApp')
   .controller('ConfirmeventCtrl', function ($location, $scope, Auth, Event, User) {
 
     function showError(err) {
-      $scope.err = err;
+      console.log(err);
     }
 
     function cancelEvent() {
@@ -24,6 +24,10 @@ angular.module('meetUpPlannerApp')
         Event.rememberEvent({});
         $location.path('#/');
       });
+    }
+
+    function successRegistration() {
+      confirmEvent($scope.event);
     }
 
     function loginAndCreateEvent(user) {
@@ -41,8 +45,8 @@ angular.module('meetUpPlannerApp')
     }
 
     function registerAndCreateEvent(user) {
-      if (user.password === user.confirm){
-        User.register(user);
+      if (user.password === user.confirm) {
+        User.register(user).then(successRegistration, showError);
       }
     }
 

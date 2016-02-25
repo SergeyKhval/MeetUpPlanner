@@ -10,20 +10,18 @@
 angular.module('meetUpPlannerApp')
   .factory('User', function (Auth, $location, $q, Ref, $timeout) {
 
-    function redirect() {
-      $location.path('/account');
-    }
-
-    function showError(err) {
-      console.log(err);
-    }
 
     var User = {};
 
     User.register = function (userObj) {
       function createProfile(user) {
-        var ref = Ref.child('users', user.uid), def = $q.defer();
-        ref.set({email: userObj.email, name: userObj.name, employer: userObj.employer, position: userObj.position}, function (err) {
+        var ref = Ref.child('users/' + user.uid), def = $q.defer();
+        ref.set({
+          email: userObj.email,
+          name: userObj.name,
+          employer: userObj.employer,
+          position: userObj.position
+        }, function (err) {
           $timeout(function () {
             if (err) {
               def.reject(err);
@@ -36,13 +34,12 @@ angular.module('meetUpPlannerApp')
         return def.promise;
       }
 
-      Auth.$createUser({email: userObj.email, password: userObj.password})
+      return Auth.$createUser({email: userObj.email, password: userObj.password})
         .then(function () {
           // authenticate so we have permission to write to Firebase
           return Auth.$authWithPassword({email: userObj.email, password: userObj.password}, {rememberMe: true});
         })
-        .then(createProfile)
-        .then(redirect, showError);
+        .then(createProfile);
     };
 
     return User;
