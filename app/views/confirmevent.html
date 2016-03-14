@@ -1,64 +1,104 @@
 <div class="row">
-  <div class="col-xs-12 text-center">
+  <div class="col-xs-12">
     <div class="well">
-      <p>Please, check your event</p>
-      <dl>
-        <dt>Event Name:</dt>
-        <dd>{{event.name}}</dd>
-        <dt>Event Type:</dt>
-        <dd>{{event.type}}</dd>
-        <dt>Event's Host:</dt>
-        <dd>{{event.host}}</dd>
-        <dt>Starts:</dt>
-        <dd>On {{event.startdate | date: 'dd-MM-yyyy'}} at {{event.starttime | date: 'HH:mm'}}</dd>
-        <dt>Ends:</dt>
-        <dd>On {{event.enddate | date: 'dd-MM-yyyy'}} at {{event.endtime | date: 'HH:mm'}}</dd>
-        <dt>Event's Location:</dt>
-        <dd>{{event.location}}</dd>
-        <dt>Guests:</dt>
-        <dd>{{event.guests}}</dd>
-        <dt>Additional Message:</dt>
-        <dd>{{event.message}}</dd>
-      </dl>
-      <div>
-        <a href="#/event/add" class="btn btn-warning btn-raised">Edit event</a>
-        <a class="btn btn-danger btn-raised" ng-click="cancelEvent()">Cancel event</a>
+      <p class="text-center">Please, check your event</p>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{event.name}}</h3>
+        </div>
+        <div class="panel-body">
+          <p>Type: <strong>{{event.type}}</strong></p>
+          <p>Host: <strong>{{event.host}}</strong></p>
+          <p>Starts: <strong>on {{event.startdate | date: 'dd-MM-yyyy'}} at {{event.starttime | date:
+                'HH:mm'}}</strong></p>
+          <p>Ends: <strong>on {{event.enddate | date: 'dd-MM-yyyy'}} at {{event.endtime | date: 'HH:mm'}}</strong>
+          </p>
+          <p>Location: <strong>{{event.location}}</strong></p>
+          <p ng-if="event.guests">Guests: <strong>{{event.guests}}</strong></p>
+          <p ng-if="event.message">Message: <strong>{{event.message}}</strong></p>
+        </div>
+        <div class="panel-footer">
+          <a href="#/event/add" class="btn btn-warning btn-raised">Edit event</a>
+          <a class="btn btn-danger btn-raised" ng-click="cancelEvent()">Cancel event</a>
+        </div>
       </div>
 
-      <p ng-hide-auth="">If everything is correct, you can log in and create your event.</p>
+      <div ng-hide-auth="">
+        <p class="text-center" ng-show="loginMode">If everything is correct, you can log in and create your event.</p>
+        <p class="text-center" ng-show="!loginMode">If everything is correct, you can register and create your event.</p>
 
-      <form class="form-horizontal" name="loginForm" ng-show="loginMode" ng-hide-auth="" ng-submit="loginAndCreateEvent(login.email, login.password)">
-        <div class="form-group">
-          <label for="email" class="col-sm-3 control-label control-label_required">Email</label>
+        <form class="form-horizontal" name="loginForm" novalidate>
+          <div class="form-group" ng-show="!loginMode">
+            <label for="name" class="col-sm-3 control-label control-label_required">Name</label>
 
-          <div class="col-sm-9">
-            <input type="email" id="email" class="form-control" ng-model="login.email" ng-required="true" autofocus/>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="password" class="col-sm-3 control-label control-label_required">Password</label>
-
-          <div class="col-sm-9">
-            <input type="password" id="password" class="form-control" ng-model="login.password" ng-required="true" />
+            <div class="col-sm-9">
+              <input type="text" id="name" class="form-control" ng-model="user.name" ng-required="true" placeholder="John Doe">
+            </div>
           </div>
 
-        </div>
+          <div class="form-group">
+            <label for="email" class="col-sm-3 control-label control-label_required">Email</label>
 
-        <div class="form-group">
-          <div class="col-xs-12 text-center">
-            <button type="submit" class="btn btn-raised btn-success">Login and create</button>
+            <div class="col-sm-9">
+              <input type="email" id="email" class="form-control" ng-model="user.email" ng-required="true" placeholder="john@doe.com" autofocus/>
+            </div>
           </div>
-        </div>
-      </form>
 
-      <hr/>
+          <div class="form-group">
+            <label for="password" class="col-sm-3 control-label control-label_required">Password</label>
 
-      <p ng-hide-auth="">Dont't have an account? No problem, you can
-        <button class="btn btn-raised btn-success" ng-click="loginMode = false">register and create event</button>
-        or even simpler
-        <button class="btn btn-raised btn-default" ng-click="confirmEvent(event)">create event as a guest</button>
-      </p>
+            <div class="col-sm-9">
+              <input type="password" id="password" class="form-control" ng-model="user.password" ng-required="true" placeholder="Secure password" />
+            </div>
+
+          </div>
+
+          <div ng-show="!loginMode">
+            <div class="form-group">
+              <label for="confirm" class="col-sm-3 control-label control-label_required">Confirm password</label>
+
+              <div class="col-sm-9">
+                <input type="password" id="confirm" class="form-control" ng-model="user.confirm" ng-required="true" placeholder="Your password one more time, please">
+              </div>
+
+            </div>
+
+            <p class="text-center">Additional info</p>
+
+            <div class="form-group">
+              <label for="employer" class="col-sm-3 control-label">Employer</label>
+
+              <div class="col-sm-9">
+                <input type="text" id="employer" class="form-control" ng-model="user.employer" placeholder="Udacity / Google / Dark side">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="position" class="col-sm-3 control-label">Position</label>
+              <div class="col-sm-9">
+                <input type="text" id="position" class="form-control" ng-model="user.position" placeholder="Teacher / CEO / Emperror">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-12 text-center">
+              <button type="submit" class="btn btn-raised btn-success" ng-click="loginAndCreateEvent(user)" ng-show="loginMode">Login and create</button>
+              <button type="submit" class="btn btn-raised btn-success" ng-show="!loginMode" ng-click="registerAndCreateEvent(user)">Register and create</button>
+            </div>
+          </div>
+        </form>
+
+        <hr/>
+
+        <p class="text-center">Dont't have an account? No problem, you can
+          <button class="btn btn-raised btn-success" ng-click="loginMode = false">register and create event</button>
+          or even simpler
+          <button class="btn btn-raised btn-default" ng-click="confirmEvent(event)">create event as a guest</button>
+        </p>
+
+
+      </div>
 
       <p ng-show-auth="">
         <a href="" class="btn btn-success btn-raised" ng-click="confirmEvent(event)">Create event</a>

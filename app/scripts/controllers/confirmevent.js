@@ -8,31 +8,46 @@
  * Controller of the meetUpPlannerApp
  */
 angular.module('meetUpPlannerApp')
-  .controller('ConfirmeventCtrl', function ($location, $scope, Auth, Event) {
+  .controller('ConfirmeventCtrl', function ($location, $scope, Auth, Event, User) {
 
     function showError(err) {
-      $scope.err = err;
+      console.log(err);
     }
 
-    function cancelEvent(){
+    function cancelEvent() {
       Event.rememberEvent({});
       $location.path('#/');
     }
 
-    function confirmEvent(event){
-      Event.createEvent(event).then(function(){
+    function confirmEvent(event) {
+      Event.createEvent(event).then(function () {
         Event.rememberEvent({});
         $location.path('#/');
       });
     }
 
-    function loginAndCreateEvent(email, password){
+    function successRegistration() {
+      confirmEvent($scope.event);
+    }
+
+    function loginAndCreateEvent(user) {
       $scope.err = null;
-      Auth.$authWithPassword({email: email, password: password}, {rememberMe: true}).then(
-        function(){
+      Auth.$authWithPassword({
+        email: user.email,
+        password: user.password
+      }, {
+        rememberMe: true
+      }).then(
+        function () {
           confirmEvent($scope.event);
         }, showError
       );
+    }
+
+    function registerAndCreateEvent(user) {
+      if (user.password === user.confirm) {
+        User.register(user).then(successRegistration, showError);
+      }
     }
 
     $scope.event = Event.getRememberedEvent();
@@ -44,4 +59,6 @@ angular.module('meetUpPlannerApp')
     $scope.cancelEvent = cancelEvent;
 
     $scope.loginAndCreateEvent = loginAndCreateEvent;
+
+    $scope.registerAndCreateEvent = registerAndCreateEvent;
   });

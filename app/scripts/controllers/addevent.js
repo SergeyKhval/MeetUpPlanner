@@ -18,6 +18,8 @@ angular.module('meetUpPlannerApp')
       }
     };
 
+    $scope.eventtypes = ['Party', 'Meeting', 'Conference', 'Dinner', 'Seminar', 'Charity', 'Award ceremony'];
+
     $scope.dateOptions = {
       formatYear: 'yy',
       startingDay: 1,
