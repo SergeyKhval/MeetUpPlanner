@@ -113,9 +113,12 @@
           </div>
 
           <div class="form-group">
-            <label for="guests" class="col-sm-3 control-label">Guests:</label>
+            <label for="evnetguests" class="col-sm-3 control-label control-label_required">Guests:</label>
             <div class="col-sm-9">
-              <textarea id="guests" class="form-control" ng-model="event.guests" ng-required="true"></textarea>
+              <textarea id="evnetguests" name="evnetguests" class="form-control" ng-model="event.guests" ng-required="true"></textarea>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3" ng-if="addEvent.evnetguests.$touched" ng-messages="addEvent.evnetguests.$error">
+              <p class="text-danger" ng-message="required">Please invite at least one guest to your event</p>
             </div>
           </div>
 
@@ -129,7 +132,7 @@
 
           <div class="form-group">
             <div class="col-xs-12 text-center">
-              <button type="submit" class="btn btn-raised btn-success">Continue</button>
+              <button type="submit" class="btn btn-raised btn-success" ng-disabled="addEvent.$invalid">Continue</button>
             </div>
           </div>
         </fieldset>
