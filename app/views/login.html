@@ -29,10 +29,12 @@
     <div class="form-group">
       <label for="loginPass" class="col-sm-3 control-label control-label_required">Password</label>
       <div class="col-sm-9">
-        <input id="loginPass" ng-required="true" name="pass" type="password" ng-model="user.password" class="form-control" />
+        <input id="loginPass" ng-required="true" name="pass" type="password" ng-model="user.password" class="form-control" minlength="3" ng-maxlength="10" />
       </div>
       <div class="col-sm-9 col-sm-offset-3" ng-if="credentials.pass.$touched" ng-messages="credentials.pass.$error">
         <p class="text-danger" ng-message="required">Password is required</p>
+        <p class="text-danger" ng-message="minlength">Password must be at least 3 characters long</p>
+        <p class="text-danger" ng-message="maxlength">Password must be no longer than 10 characters</p>
       </div>
     </div>
 
@@ -66,9 +68,9 @@
     </div>
 
     <p class="text-center">
-      <button class="btn btn-primary" ng-click="passwordLogin(user.email, user.password)" ng-hide="createMode">Log In</button>
+      <button class="btn btn-primary" ng-click="passwordLogin(user.email, user.password)" ng-hide="createMode" ng-disabled="!user.email && !user.password">Log In</button>
       <button class="btn btn-default" ng-click="createMode = true" ng-hide="createMode">Register</button>
-      <button class="btn btn-primary" ng-cloak ng-show="createMode" ng-click="createAccount(user)">Create Account</button>
+      <button class="btn btn-primary" ng-cloak ng-show="createMode" ng-click="createAccount(user)" ng-disabled="!(user.name && user.email && user.password && user.confirm)">Create Account</button>
       <button class="btn btn-default" ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</button>
     </p>
   </form>
