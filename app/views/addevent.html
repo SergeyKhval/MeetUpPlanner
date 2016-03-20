@@ -40,7 +40,7 @@
             </div>
 
             <div class="col-xs-12 col-sm-9 col-sm-offset-3" ng-if="addEvent.eventhost.$touched" ng-messages="addEvent.eventhost.$error">
-              <p class="text-danger" ng-message="required">Event must have host</p>
+              <p class="text-danger" ng-message="required">Please, set the host of your event</p>
             </div>
           </div>
 
@@ -53,8 +53,9 @@
               <p class="input-group">
                 <input id="starttime" type="text" class="form-control" name="eventstartdate" placeholder="24.12.2016" uib-datepicker-popup="dd.MM.yyyy" ng-model="event.startdate" is-open="openedPopups.startDate" max-date="event.enddate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                 <span class="input-group-btn">
-                  <button type="button" class="btn btn-default" ng-click="openDatePopup('startDate')"><i
-                    class="glyphicon glyphicon-calendar"></i></button>
+                  <button type="button" class="btn btn-default" ng-click="openDatePopup('startDate')">
+                     <i class="glyphicon glyphicon-calendar"></i>
+                   </button>
                 </span>
               </p>
             </div>

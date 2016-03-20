@@ -3,9 +3,14 @@
   <div class="col-xs-12">
     <div class="well">
       <div class="row">
+
         <div class="col-xs-12 text-center">
           <a class="btn btn-success" href="#/event/add">Add your event</a>
         </div>
+
+        <h3 class="loading text-center" ng-show="loadingEvents">
+          <span class="glyphicon glyphicon-refresh animation_rotate" aria-hidden="true"></span> loading events...
+        </h3>
 
         <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="event in events | orderBy: '-createdAt'">
           <div class="panel panel-info">

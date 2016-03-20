@@ -3,17 +3,7 @@
   <h2 class="text-center" ng-show="createMode">Register</h2>
 
   <form role="form" name="credentials" class="form-horizontal" novalidate>
-    <div class="form-group" ng-show="createMode">
-      <label for="name" class="col-sm-3 control-label control-label_required">Name</label>
 
-      <div class="col-sm-9">
-        <input type="text" id="name" name="credname" class="form-control" ng-model="user.name" ng-required="true" placeholder="John Doe">
-      </div>
-
-      <div class="col-sm-9 col-sm-offset-3" ng-if="credentials.credname.$touched" ng-messages="credentials.credname.$error">
-        <p class="text-danger" ng-message="required">Name is required</p>
-      </div>
-    </div>
 
     <div class="form-group">
       <label for="loginEmail" class="col-sm-3 control-label control-label_required">Email</label>
@@ -23,6 +13,18 @@
       <div class="col-sm-9 col-sm-offset-3" ng-if="credentials.email.$touched" ng-messages="credentials.email.$error">
         <p class="text-danger" ng-message="required">Email is required</p>
         <p class="text-danger" ng-message="email">Please, provide a valid email</p>
+      </div>
+    </div>
+
+    <div class="form-group" ng-show="createMode">
+      <label for="name" class="col-sm-3 control-label control-label_required">Name</label>
+
+      <div class="col-sm-9">
+        <input type="text" id="name" name="credname" class="form-control" ng-model="user.name" ng-required="true" placeholder="John Doe">
+      </div>
+
+      <div class="col-sm-9 col-sm-offset-3" ng-if="credentials.credname.$touched" ng-messages="credentials.credname.$error">
+        <p class="text-danger" ng-message="required">Name is required</p>
       </div>
     </div>
 
