@@ -51,7 +51,7 @@
 
             <div class="col-sm-6">
               <p class="input-group">
-                <input id="starttime" type="text" class="form-control" name="eventstartdate" placeholder="24.12.2016" uib-datepicker-popup="dd.MM.yyyy" ng-model="event.startdate" is-open="openedPopups.startDate" max-date="event.enddate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                <input id="starttime" type="text" datevalidator class="form-control" name="eventstartdate" placeholder="24.12.2016" uib-datepicker-popup="dd.MM.yyyy" ng-model="event.startdate" is-open="openedPopups.startDate" max-date="event.enddate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-default" ng-click="openDatePopup('startDate')">
                      <i class="glyphicon glyphicon-calendar"></i>
@@ -63,12 +63,14 @@
               <uib-timepicker ng-model="event.starttime" name="eventstarttime" hour-step="timePicker.hstep" minute-step="timePicker.mstep" show-meridian="false" ng-required="true"></uib-timepicker>
             </div>
 
-            <div class="col-sm-9 col-sm-offset-3" ng-if="addEvent.eventstartdate.$touched" ng-messages="addEvent.eventstartdate.$error">
+            <div class="col-sm-9 col-sm-offset-3" ng-if="addEvent.eventstartdate.$touched" ng-messages="addEvent.eventstartdate.$error" ng-messages-multiple>
               <p class="text-danger" ng-message="required">Please, set start date of your event</p>
+              <p class="text-danger" ng-message="badDate">Please, set date in the format <code>dd.mm.yyyy</code></p>
             </div>
 
-            <div class="col-sm-9 col-sm-offset-3" ng-if="addEvent.eventstarttime.$touched" ng-messages="addEvent.eventstarttime.$error">
+            <div class="col-sm-9 col-sm-offset-3" ng-if="addEvent.eventstarttime.$touched" ng-messages="addEvent.eventstarttime.$error" ng-messages-multiple>
               <p class="text-danger" ng-message="required">Please, set start time of your event</p>
+              <p class="text-danger" ng-message="time">Please, use only numeric characters in your time</p>
             </div>
           </div>
 
@@ -77,7 +79,7 @@
 
             <div class="col-sm-6">
               <p class="input-group">
-                <input id="endtime" type="text" name="eventenddate" class="form-control" placeholder="25.12.2016" uib-datepicker-popup="dd.MM.yyyy" ng-model="event.enddate" is-open="openedPopups.endDate" min-date="event.startdate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                <input id="endtime" type="text" name="eventenddate" class="form-control" datevalidator placeholder="25.12.2016" uib-datepicker-popup="dd.MM.yyyy" ng-model="event.enddate" is-open="openedPopups.endDate" min-date="event.startdate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-default" ng-click="openDatePopup('endDate')"><i
                     class="glyphicon glyphicon-calendar"></i></button>
@@ -89,12 +91,14 @@
               <uib-timepicker ng-model="event.endtime" name="eventendtime" ng-required="true" hour-step="timePicker.hstep" minute-step="timePicker.mstep" show-meridian="false"></uib-timepicker>
             </div>
 
-            <div class="col-sm-9 col-sm-offset-3" ng-if="addEvent.eventenddate.$touched" ng-messages="addEvent.eventenddate.$error">
+            <div class="col-sm-9 col-sm-offset-3" ng-if="addEvent.eventenddate.$touched" ng-messages="addEvent.eventenddate.$error" ng-messages-multiple>
               <p class="text-danger" ng-message="required">Please, set end date of your event</p>
+              <p class="text-danger" ng-message="badDate">Please, set date in the format <code>dd.mm.yyyy</code></p>
             </div>
 
-            <div class="col-sm-9 col-sm-offset-3" ng-if="addEvent.eventendtime.$touched" ng-messages="addEvent.eventendtime.$error">
+            <div class="col-sm-9 col-sm-offset-3" ng-if="addEvent.eventendtime.$touched" ng-messages="addEvent.eventendtime.$error" ng-messages-multiple>
               <p class="text-danger" ng-message="required">Please, set end time of your event</p>
+              <p class="text-danger" ng-message="time">Please, use only numeric characters in your time</p>
             </div>
           </div>
 
