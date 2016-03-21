@@ -9,18 +9,34 @@
  */
 angular.module('meetUpPlannerApp')
   .controller('AddeventCtrl', function ($scope, $location, Event) {
-    $scope.event = Event.getRememberedEvent();
+    $scope.event = Event.getRememberedEvent() || {};
 
     $scope.rememberEvent = function (form, event) {
-      if (form.$valid){
+      if (form.$valid) {
+        $scope.event.startdate = $scope.startdate;
+        $scope.event.enddate = $scope.enddate;
         Event.rememberEvent(event);
         $location.path('/event/confirm');
       }
     };
 
+    $scope.compareDates = function (firstDate, secondDate) {
+      return new Date(firstDate) > new Date(secondDate);
+    };
+
+    $scope.validateForm = function (form) {
+      return form.$invalid || $scope.compareDates($scope.startdate, $scope.enddate);
+    }
+
     $scope.eventtypes = ['Party', 'Meeting', 'Conference', 'Dinner', 'Seminar', 'Charity', 'Award ceremony'];
 
-    $scope.dateOptions = {
+    $scope.startDateOptions = {
+      formatYear: 'yy',
+      startingDay: 1,
+      showWeeks: false
+    };
+
+    $scope.endDateOptions = {
       formatYear: 'yy',
       startingDay: 1,
       showWeeks: false

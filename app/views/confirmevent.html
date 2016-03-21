@@ -28,19 +28,21 @@
         <p class="text-center" ng-show="!loginMode">If everything is correct, you can register and create your event.</p>
 
         <form class="form-horizontal" name="loginForm" novalidate>
-          <div class="form-group" ng-show="!loginMode">
-            <label for="name" class="col-sm-3 control-label control-label_required">Name</label>
 
-            <div class="col-sm-9">
-              <input type="text" id="name" class="form-control" ng-model="user.name" ng-required="true" placeholder="John Doe">
-            </div>
-          </div>
 
           <div class="form-group">
             <label for="email" class="col-sm-3 control-label control-label_required">Email</label>
 
             <div class="col-sm-9">
               <input type="email" id="email" class="form-control" ng-model="user.email" ng-required="true" placeholder="john@doe.com" autofocus/>
+            </div>
+          </div>
+
+          <div class="form-group" ng-show="!loginMode">
+            <label for="name" class="col-sm-3 control-label control-label_required">Name</label>
+
+            <div class="col-sm-9">
+              <input type="text" id="name" class="form-control" ng-model="user.name" ng-required="true" placeholder="John Doe">
             </div>
           </div>
 

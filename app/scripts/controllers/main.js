@@ -11,7 +11,10 @@ angular.module('meetUpPlannerApp')
   .controller('MainCtrl', function ($scope, Event) {
     $scope.events = null;
 
-    $scope.events = Event.allEvents().$loaded().then(function(data){
+    $scope.loadingEvents = true;
+
+    Event.allEvents().$loaded().then(function (data) {
       $scope.events = data;
+      $scope.loadingEvents = false;
     });
   });
