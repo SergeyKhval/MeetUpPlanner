@@ -13,14 +13,20 @@ angular.module('meetUpPlannerApp')
 
     $scope.rememberEvent = function (form, event) {
       if (form.$valid) {
+        $scope.event.startdate = $scope.startdate;
+        $scope.event.enddate = $scope.enddate;
         Event.rememberEvent(event);
         $location.path('/event/confirm');
       }
     };
 
-    $scope.validateDate = function () {
-      console.log($scope.parent.event.startdate);
+    $scope.compareDates = function (firstDate, secondDate) {
+      return new Date(firstDate) > new Date(secondDate);
     };
+
+    $scope.validateForm = function (form) {
+      return form.$invalid || $scope.compareDates($scope.startdate, $scope.enddate);
+    }
 
     $scope.eventtypes = ['Party', 'Meeting', 'Conference', 'Dinner', 'Seminar', 'Charity', 'Award ceremony'];
 
@@ -33,8 +39,7 @@ angular.module('meetUpPlannerApp')
     $scope.endDateOptions = {
       formatYear: 'yy',
       startingDay: 1,
-      showWeeks: false,
-      minDate: $scope.event.startdate
+      showWeeks: false
     };
 
     $scope.openedPopups = {
