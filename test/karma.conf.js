@@ -40,7 +40,6 @@ module.exports = function(config) {
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/jquery-locationpicker-plugin/dist/locationpicker.jquery.js',
       'bower_components/angular-googlemap-location-picker/src/angular-googlemap-location-picker.js',
-      'bower_components/angular-ui-validate/dist/validate.js',
       'bower_components/mockfirebase/browser/mockfirebase.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
