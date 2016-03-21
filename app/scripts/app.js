@@ -20,5 +20,6 @@ angular.module('meetUpPlannerApp', [
   'firebase.ref',
   'firebase.auth',
   'ui.bootstrap',
+  'ui.validate',
   'angular-location-picker'
 ]);

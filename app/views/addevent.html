@@ -51,7 +51,7 @@
 
             <div class="col-sm-6">
               <p class="input-group">
-                <input id="starttime" type="text" datevalidator class="form-control" name="eventstartdate" placeholder="24.12.2016" uib-datepicker-popup="dd.MM.yyyy" ng-model="event.startdate" is-open="openedPopups.startDate" max-date="event.enddate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                <input id="starttime" type="text" datevalidator ui-validate="{mindate: validateDate}" class="form-control" name="eventstartdate" placeholder="24.12.2016" uib-datepicker-popup="dd.MM.yyyy" ng-model="event.startdate" is-open="openedPopups.startDate" datepicker-options="startDateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-default" ng-click="openDatePopup('startDate')">
                      <i class="glyphicon glyphicon-calendar"></i>
@@ -66,6 +66,7 @@
             <div class="col-sm-9 col-sm-offset-3" ng-if="addEvent.eventstartdate.$touched" ng-messages="addEvent.eventstartdate.$error" ng-messages-multiple>
               <p class="text-danger" ng-message="required">Please, set start date of your event</p>
               <p class="text-danger" ng-message="badDate">Please, set date in the format <code>dd.mm.yyyy</code></p>
+              <p class="text-danger" ng-message="mindate">mindate</p>
             </div>
 
             <div class="col-sm-9 col-sm-offset-3" ng-if="addEvent.eventstarttime.$touched" ng-messages="addEvent.eventstarttime.$error" ng-messages-multiple>
@@ -79,7 +80,7 @@
 
             <div class="col-sm-6">
               <p class="input-group">
-                <input id="endtime" type="text" name="eventenddate" class="form-control" datevalidator placeholder="25.12.2016" uib-datepicker-popup="dd.MM.yyyy" ng-model="event.enddate" is-open="openedPopups.endDate" min-date="event.startdate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                <input id="endtime" type="text" name="eventenddate" class="form-control" datevalidator placeholder="25.12.2016" uib-datepicker-popup="dd.MM.yyyy" ng-model="event.enddate" is-open="openedPopups.endDate" datepicker-options="endDateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-default" ng-click="openDatePopup('endDate')"><i
                     class="glyphicon glyphicon-calendar"></i></button>

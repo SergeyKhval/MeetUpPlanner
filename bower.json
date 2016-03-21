@@ -16,7 +16,8 @@
     "bootstrap-material-design": "~0.5.7",
     "angular-bootstrap": "^1.1.1",
     "jquery-locationpicker-plugin": "https://github.com/Logicify/jquery-locationpicker-plugin.git#^0.1.12",
-    "angular-googlemap-location-picker": "https://github.com/SergeyKhval/angular-googlemap-location-picker.git"
+    "angular-googlemap-location-picker": "https://github.com/SergeyKhval/angular-googlemap-location-picker.git",
+    "angular-ui-validate": "^1.2.2"
   },
   "devDependencies": {
     "mockfirebase": "0.11.0",

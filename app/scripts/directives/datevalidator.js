@@ -12,7 +12,7 @@ angular.module('meetUpPlannerApp')
       require: 'ngModel',
       link: function (scope, elem, attr, ngModel) {
         function validate(value) {
-          if (value !== undefined && value != null) {
+          if (value !== undefined && value !== null) {
             ngModel.$setValidity('badDate', true);
             if (value instanceof Date) {
               var d = Date.parse(value);
@@ -22,7 +22,7 @@ angular.module('meetUpPlannerApp')
               }
             } else {
               var myPattern = new RegExp(/^([0-9]{2})\.([0-9]{2})\.([0-9]{4})$/);
-              if (value != '' && !myPattern.test(value)) {
+              if (value !== '' && !myPattern.test(value)) {
                 ngModel.$setValidity('badDate', false);
               }
             }

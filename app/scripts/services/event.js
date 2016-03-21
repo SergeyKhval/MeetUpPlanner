@@ -30,7 +30,6 @@ angular.module('meetUpPlannerApp')
 
     function rememberEvent(event){
       rememberedEvent = event;
-      return rememberedEvent;
     }
 
     function getRememberedEvent(){
